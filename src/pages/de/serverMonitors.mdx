@@ -1,0 +1,101 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/de/project-list.png";
+import CIPImage from "../../images/de/create-in-project.png";
+import CSMImages from "../../images/de/create-server-monitor.png";
+import ISMIPImages from "../../images/de/inactive-server-monitor-in-project.png";
+import SSMIPImages from "../../images/de/success-server-monitor-in-project.png";
+
+# Server Monitoring
+
+## Wozu wird ein Server Monitor verwendet?
+
+Ein **Server Monitor** überprüft ob Ihr Server zu viele Ressourcen verwendet. Das heißt wenn auf Ihrem Server z.b. ein Prozess gestartet wurde der sehr viel CPU, Arbeitsspeicher beansprucht kann sich das negativ auf die performance Ihres Webservers auswirken und es können z.B. nicht alle Besucher mehr bedient werden und manche werden anstatt Ihrer Webseite nur eine Fehlermeldung zu sehen bekommen. Sollte dies der Fall sein werden Sie von uns benachrichtigt. Zusätzlich überwachen wir den Festplattenspeicher auf Ihrem Server, sollte dieser ausgehen werden Sie auch von uns benachrichtigt.
+
+## Hinzufügen eines Server Monitors
+
+- Loggen Sie sich bei `<ihr Organisationsname>.two00.com` ein
+- Klicken Sie auf **Projekte**
+- Wählen Sie ein **Projekt** aus:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="Liste aller Projekte"
+  hideDownload
+/>
+
+- Klicken Sie auf **Servermonitor hinzufügen**:
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detailansicht von einem ausgewähltem Projekt"
+  hideDownload
+/>
+
+- Geben Sie einen **Namen** für Ihren Monitor an:
+
+<ModalImage
+  className="img-small"
+  small={CSMImages}
+  large={CSMImages}
+  alt="Detailansicht von einem ausgewähltem Projekt"
+  hideDownload
+/>
+
+- Klicken Sie auf **Neuen Servermonitor erstellen**
+
+Wählen Sie nun den Button **Hilfe** aus und befolgen die Instruktionen um den Server Monitor auf Ihrem Server einzurichten.
+
+Stellen Sie sicher dass Sie [Node.js](https://nodejs.org/en/download/package-manager/) und [cURL](https://curl.haxx.se/download.html) installiert haben.
+
+```bash
+# Loggen Sie sich auf Ihrem Server ein
+ssh <ihr username>@<die ip adresse des servers>
+# installieren Sie @two00/cli
+npm install -g @two00/cli
+# schauen Sie nach wo Sie Node.js installiert haben
+which node
+# öffnen Sie ihre Crontab
+crontab -e
+```
+
+Fügen Sie nun den Pfad zu Node.js und Ihrer Shell hinzu:
+
+```bash
+# fügen Sie hier Ihren Pfad zu Bash hinzu sollte dieser nicht /bin/bash sein
+SHELL=/bin/bash
+# fügen Sie hier Ihren Pfad zu Node.js hinzu sollte dieser nicht /usr/bin seim
+PATH=/usr/bin
+```
+
+Fügen Sie un einen neuen Cronjob hinzu:
+
+```bash
+* * * * * two00 server-monitor 7009e586-8217-4f69-920d-a35ea5b7c3f4 > /dev/null 2>&1
+```
+
+Nun wird Ihr Server einmal in der Minute den aktuellen Gesundheitsstatus an two00.com berichten. Sollte die CPU, der Arbeitspeicher oder der Festplattenspeicher über 80% erreichen werden Sie sofort von uns benachrichtigt.
+
+**Inaktiver Endpunkt Monitor**
+
+<ModalImage
+  className="img-small"
+  small={ISMIPImages}
+  large={ISMIPImages}
+  alt="Inaktiver Endpunkt"
+  hideDownload
+/>
+
+**Aktiver Endpunkt Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SSMIPImages}
+  large={SSMIPImages}
+  alt="Inaktiver Endpunkt"
+  hideDownload
+/>

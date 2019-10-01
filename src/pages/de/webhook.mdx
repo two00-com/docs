@@ -1,0 +1,46 @@
+# Einrichten einer Custom Webhook
+
+Um Nachrichten über eine Custom Webhook zu erhalten müssen Sie auf ihrem Server einen Route einrichten der `POST` Requests entgegen nimmt.
+
+Die Webhook liefert folgende Nachricht im Request Body:
+
+Ein JSON Objekt mit folgenden keys:
+
+| key             |  type                       | description                                                                                    |
+| --------------- | --------------------------- | ---------------------------------------------------------------------------------------------- |
+| `text`          | `String`                    | Ein Text der das Ereignis beschreibt.                                                          |
+| `ping`          | `Object` &#124; `undefined` | Ein Objekt das folgende Werte hält: `latency`, `statusCode`, `expectedStatusCode`, `createdAt` |
+| `cronjob`       | `Object` &#124; `undefined` | Ein Objekt das folgende Werte hält: `name`, `now`, `nextJob`, `grace`                          |
+| `serverMonitor` | `Object` &#124; `undefined` | Ein Objekt das folgende Werte hält: `serverMonitor`, `values`                                  |
+
+Das `ping` Objekt hält folgende keys:
+
+| key                  | type       | description                                 |
+| -------------------- | ---------- | ------------------------------------------- |
+| `latency`            | `Integer`  | `milliseconds` - `time to first byte`       |
+| `statusCode`         | `Integer`  | Der Status Code der beim Request zurück kam |
+| `expectedStatusCode` | `Integer`  | Der Status Code der erwartet wird           |
+| `createdAt`          | `Datetime` |                                             |
+
+Das `cronjob` Objekt hält folgende keys:
+
+| key       | type                        | description                                                                                                  |
+| --------- | --------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `name`    | `String`                    | Name des CronJob Monitors                                                                                    |
+| `now`     | `String` &#124; `undefined` | String im Format: `MM/DD/YYYY HH:mm UTC` - Zeitpunkt wann der Cronjob geprüft wurde                          |
+| `nextJob` | `String` &#124; `undefined` | String im Format: `MM/DD/YYYY HH:mm UTC` - Zeitpunkt wann der Cronjob laufen hätte sollen                    |
+| `grace`   | `String` &#124; `undefined` | String im Format: `MM/DD/YYYY HH:mm UTC` - Zeitpunkt wann der Cronjob fertig sein sollte inklusive Nachfrist |
+
+Das `serverMonitor` Objekt hält folgende keys:
+
+| key             | type                       | description                   |
+| --------------- | -------------------------- | ----------------------------- |
+| `serverMonitor` | `Object`                   | Enthält folgende keys: `name` |
+| `values`        | `Array` &#124; `undefined` | Ein Array of Object           |
+
+Ein `values` Objekt hält folgende keys:
+
+| key     | type      | description                     |
+| ------- | --------- | ------------------------------- |
+| `type`  | `String`  | Enum: `CPU`, `RAM`, `DISC`      |
+| `value` | `Integer` | Die aktualle Nutzung in Prozent |

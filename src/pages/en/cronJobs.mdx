@@ -1,0 +1,116 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/en/project-list.png";
+import CIPImage from "../../images/en/create-in-project.png";
+import CCJImages from "../../images/en/create-cron-job.png";
+import ICJIPImages from "../../images/en/inactive-cron-job-in-project.png";
+import SCJIPImages from "../../images/en/success-cron-job-in-project.png";
+
+# Cron Job Monitoring
+
+## What is a cronjob monitor used for?
+
+A **Cron Job Monitor** checks if and how long a certain step, which has expired in a regular interval on your server, is functioning or not. This can be, for example, a daily database backup or your weekly newsletter. If this step does not expire or takes longer than usual, we will inform you immediately.
+
+## Adding a Cron Job Monitor
+
+- Log in to `<ihr Organisationsname>.two00.com`
+- Click on **Projects**
+- Select a **project**:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="List of all projects"
+  hideDownload
+/>
+
+- Click **Add cron job**:
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detail view of a project"
+  hideDownload
+/>
+
+- Enter **Name**, a **Cron Expression** und a **Grace Period** for your monitor:
+
+<ModalImage
+  className="img-small"
+  small={CCJImages}
+  large={CCJImages}
+  alt="Create a new cron job monitor"
+  hideDownload
+/>
+
+- Click on **Create New Cron Job**:
+
+Select the **Ping**, or the **Start** button and follow the instructions to set up your cron job on your server.
+
+Make sure you have [cURL](https://curl.haxx.se/download.html) installed.
+
+```bash
+# Log in to the server on which you have installed the CronJob
+ssh <your username>@<the ip address of your server>
+# Simple example
+* * * * * ./your_cron_job_script && curl https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 > /dev/null 2>&1
+# Example with Start and End to track the time of the cron job
+* * * * * curl https://api.two00.xyz/rest/start/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 && ./ihr_cronjob_script && curl https://api.two00.xyz/rest/end/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 > /dev/null 2>&1
+```
+
+You can also call the URL within your script:
+
+**Node.js**
+
+```js
+const https = require("https");
+
+https.get(
+  "https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4",
+);
+```
+
+**PHP**
+
+```php
+file_get_contents("https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4");
+```
+
+**Python 3**
+
+```py
+import urllib.request
+
+urllib.request.urlopen("https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4").read()
+```
+
+**Bash**
+
+```bash
+curl https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4
+```
+
+Now your cronjob will report each time to two00.com when your cronjob has run. If your cronjob did not run, you will be notified immediately.
+
+**Inactive Cron Job Monitor**
+
+<ModalImage
+  className="img-small"
+  small={ICJIPImages}
+  large={ICJIPImages}
+  alt="Inactive cron job monitor"
+  hideDownload
+/>
+
+**Active Cron Job Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SCJIPImages}
+  large={SCJIPImages}
+  alt="Active cron job monitor"
+  hideDownload
+/>

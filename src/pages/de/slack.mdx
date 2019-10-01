@@ -1,0 +1,92 @@
+import ModalImage from "react-modal-image";
+
+import SNAImage from "../../images/slack/slack-new-app.png";
+import SCNAImage from "../../images/slack/slack-create-new-app.png";
+import SAddIWImage from "../../images/slack/slack-add-incoming-webhook.png";
+import SAIWImage from "../../images/slack/slack-activate-incoming-webhook.png";
+import SAddNIWImage from "../../images/slack/slack-add-new-incoming-webhook.png";
+import SAWTPImage from "../../images/slack/slack-allow-webhook-to-post.png";
+import SCWImage from "../../images/slack/slack-copy-webhook.png";
+import SDPImage from "../../images/slack/slack-de-project.png";
+
+# Einrichten einer Slack Webhook
+
+Wenn Sie benachrichtigungen in Ihrem Slack Channel erhalten möchten können Sie diese wie folgt einrichten.
+
+- Gehen Sie auf [https://api.slack.com/apps](https://api.slack.com/apps) und klicken Sie auf **Create New App**.
+
+<ModalImage
+  className="img-small"
+  small={SNAImage}
+  large={SNAImage}
+  alt="Neue App hinzufügen"
+  hideDownload
+/>
+
+- Geben Sie nun einen **Namen** und einen **Workspace** an:
+
+<ModalImage
+  className="img-small"
+  small={SCNAImage}
+  large={SCNAImage}
+  alt="Neue App erstellen"
+  hideDownload
+/>
+
+- Klicken Sie bei **Add features and functionality** auf **Incoming Webhook**:
+
+<ModalImage
+  className="img-small"
+  small={SAddIWImage}
+  large={SAddIWImage}
+  alt="Incoming Webhook hinzufügen"
+  hideDownload
+/>
+
+- Klicken Sie nun auf **Activate Incoming Webhooks**:
+
+<ModalImage
+  className="img-small"
+  small={SAIWImage}
+  large={SAIWImage}
+  alt="Incoming Webhook aktivieren"
+  hideDownload
+/>
+
+- Klicken Sie nun auf **Add New Webhook to Workspace**:
+
+<ModalImage
+  className="img-small"
+  small={SAddNIWImage}
+  large={SAddNIWImage}
+  alt="Hinzufügen einer Incoming Webhook zu einem Workspace"
+  hideDownload
+/>
+
+- Bestätigen Sie nun dass diese Webhook in Ihrem Channel posten darf:
+
+<ModalImage
+  className="img-small"
+  small={SAWTPImage}
+  large={SAWTPImage}
+  alt="Bestätigen dass die Webhook in einem Channel posten darf"
+  hideDownload
+/>
+
+- Kopieren Sie nun die Webhook URL und speichern diese in einem Ihrer Projekte
+
+<ModalImage
+  className="img-small"
+  small={SCWImage}
+  large={SCWImage}
+  alt="Kopieren der Webhook URL"
+  hideDownload
+/>
+
+<ModalImage
+  className="img-small"
+  small={SDPImage}
+  large={SDPImage}
+  alt="Speichern der Webhook URL im Projekt"
+  hideDownload
+/>

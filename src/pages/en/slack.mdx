@@ -1,0 +1,92 @@
+import ModalImage from "react-modal-image";
+
+import SNAImage from "../../images/slack/slack-new-app.png";
+import SCNAImage from "../../images/slack/slack-create-new-app.png";
+import SAddIWImage from "../../images/slack/slack-add-incoming-webhook.png";
+import SAIWImage from "../../images/slack/slack-activate-incoming-webhook.png";
+import SAddNIWImage from "../../images/slack/slack-add-new-incoming-webhook.png";
+import SAWTPImage from "../../images/slack/slack-allow-webhook-to-post.png";
+import SCWImage from "../../images/slack/slack-copy-webhook.png";
+import SDPImage from "../../images/slack/slack-de-project.png";
+
+# Add a Slack Webhook
+
+If you want to receive notifications in your Slack Channel, you can set them up as follows.
+
+- Go to [https://api.slack.com/apps](https://api.slack.com/apps) and click **Create New App**.
+
+<ModalImage
+  className="img-small"
+  small={SNAImage}
+  large={SNAImage}
+  alt="Add new app"
+  hideDownload
+/>
+
+- Now enter a **Name** and a **Workspace**:
+
+<ModalImage
+  className="img-small"
+  small={SCNAImage}
+  large={SCNAImage}
+  alt="Create new app"
+  hideDownload
+/>
+
+- In the section **Add features and functionality** click the **Incoming Webhook** button:
+
+<ModalImage
+  className="img-small"
+  small={SAddIWImage}
+  large={SAddIWImage}
+  alt="Add incoming webhook"
+  hideDownload
+/>
+
+- Click **Activate Incoming Webhooks**:
+
+<ModalImage
+  className="img-small"
+  small={SAIWImage}
+  large={SAIWImage}
+  alt="Activate incoming webhook"
+  hideDownload
+/>
+
+- Click **Add New Webhook to Workspace**:
+
+<ModalImage
+  className="img-small"
+  small={SAddNIWImage}
+  large={SAddNIWImage}
+  alt="Add incoming webhook to the workspace"
+  hideDownload
+/>
+
+- Confirm that the webhook is allowed to post in this channel:
+
+<ModalImage
+  className="img-small"
+  small={SAWTPImage}
+  large={SAWTPImage}
+  alt="Confirm that the webhook is allowed to post to the channel"
+  hideDownload
+/>
+
+- Copy the webhook URL and save it in the project
+
+<ModalImage
+  className="img-small"
+  small={SCWImage}
+  large={SCWImage}
+  alt="Copy the webhook URL"
+  hideDownload
+/>
+
+<ModalImage
+  className="img-small"
+  small={SDPImage}
+  large={SDPImage}
+  alt="Save the webhook URL"
+  hideDownload
+/>

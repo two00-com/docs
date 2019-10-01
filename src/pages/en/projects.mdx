@@ -1,0 +1,25 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/en/project-list.png";
+
+# Projects
+
+A project consists of a collection of uptime monitors, cronjob monitors and server monitors. For a project, you can specify how you want to be notified. There are 4 options here. You only have to set up Telegram via Telegram.
+
+## Create a new project
+
+- Log in to `<ihr Organisationsname>.two00.com` ein
+- Click **Projects**
+- Click **Add Project**:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="List of all projects"
+  hideDownload
+/>
+
+Specify a name, a main server, a server 2, and a server 3 for your monitor.
+
+If you would like to receive notifications, you can enter an email address, a phone number, a Slack Webhook URL, and a Custom Webhook.

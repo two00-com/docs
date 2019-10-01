@@ -1,0 +1,116 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/de/project-list.png";
+import CIPImage from "../../images/de/create-in-project.png";
+import CCJImages from "../../images/de/create-cron-job.png";
+import ICJIPImages from "../../images/de/inactive-cron-job-in-project.png";
+import SCJIPImages from "../../images/de/success-cron-job-in-project.png";
+
+# Cronjob Monitoring
+
+## Wozu wird ein Cronjob Monitor verwendet?
+
+Ein **Cronjob Monitor** überprüft ob bzw. wie lang ein gewisser Arbeitsschritt der in einem Regelmäßigen Intervall auf ihrem Server abgelaufen ist oder nicht. Dies kann sich z.B. um ein tägliches Datenbank Backup handeln oder um ihren wöchentlichen Newsletter. Sollte dieser Arbeitsschritt nicht ablaufen oder länger dauern als gewohnt werden Sie von uns unverzüglich informiert.
+
+## Hinzufügen eines Cronjob Monitors
+
+- Loggen Sie sich bei `<ihr Organisationsname>.two00.com` ein
+- Klicken Sie auf **Projekte**
+- Wählen Sie ein **Projekt** aus:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="Liste aller Projekte"
+  hideDownload
+/>
+
+- Klicken Sie auf **Cronjob hinzufügen**:
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detailansicht von einem ausgewähltem Projekt"
+  hideDownload
+/>
+
+- Geben Sie einen **Namen**, eine **Cron Expression** und eine **Nachfrist** für Ihren Monitor an:
+
+<ModalImage
+  className="img-small"
+  small={CCJImages}
+  large={CCJImages}
+  alt="Erstellen eines neuen Cronjob Monitors"
+  hideDownload
+/>
+
+- Klicken Sie auf **Neuen CronJob erstellen**:
+
+Wählen Sie nun den Button **Ping**, oder **Start** aus und befolgen die Instruktionen um den Cronjob Monitor bei ihrem Cronjob einzurichten.
+
+Stellen Sie sicher dass Sie [cURL](https://curl.haxx.se/download.html) installiert haben.
+
+```bash
+# Loggen Sie sich auf Ihrem Server auf dem Sie den CronJob haben ein
+ssh <ihr username>@<die ip adresse des servers>
+# Einfaches Beispiel
+* * * * * ./ihr_cronjob_script && curl https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 > /dev/null 2>&1
+# Besipel mit Start und End wenn Sie die Zeit des Cronjobs tracken möchten
+* * * * * curl https://api.two00.xyz/rest/start/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 && ./ihr_cronjob_script && curl https://api.two00.xyz/rest/end/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4 > /dev/null 2>&1
+```
+
+Sie können die Url auch innerhalb ihres Scripts aufrufen:
+
+**Node.js**
+
+```js
+const https = require("https");
+
+https.get(
+  "https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4",
+);
+```
+
+**PHP**
+
+```php
+file_get_contents("https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4");
+```
+
+**Python 3**
+
+```py
+import urllib.request
+
+urllib.request.urlopen("https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4").read()
+```
+
+**Bash**
+
+```bash
+curl https://api.two00.xyz/rest/ping/6b8cfd4b-2951-4df5-a625-9f13c4892be4
+```
+
+Nun wird ihr Cronjob jedes mal an two00.com bericht erstatten wann Ihr Cronjob gelaufen ist. Sollte dieser einmal nicht gelaufen sein werden Sie sofort von uns benachrichtigt.
+
+**Inaktiver Cronjob Monitor**
+
+<ModalImage
+  className="img-small"
+  small={ICJIPImages}
+  large={ICJIPImages}
+  alt="Inaktiver Cronjob Monitor"
+  hideDownload
+/>
+
+**Aktiver Cronjob Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SCJIPImages}
+  large={SCJIPImages}
+  alt="Aktiver Cronjob Monitor"
+  hideDownload
+/>

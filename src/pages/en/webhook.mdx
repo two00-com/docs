@@ -1,0 +1,60 @@
+import ModalImage from "react-modal-image";
+
+import CWImage from "../../images/en/custom-webhook.png";
+
+# Add a Custom Webhook
+
+To receive messages via a Custom Webhook, you need to set up a route on your server that accepts POST requests.
+
+- Add your endpoint to the project
+
+<ModalImage
+  className="img-small"
+  small={CWImage}
+  large={CWImage}
+  alt="Add your custom webhook to the project"
+  hideDownload
+/>
+
+The webhook will respond with the following message in the request body:
+
+A JSON object with the following keys:
+
+| key             |  type                       | description                                                                                       |
+| --------------- | --------------------------- | ------------------------------------------------------------------------------------------------- |
+| `text`          | `string`                    | A text that describes the event.                                                                  |
+| `ping`          | `object` &#124; `undefined` | An object containing the following keys: `latency`, `statusCode`, `expectedStatusCode`, `createdAt` |
+| `cronjob`       | `object` &#124; `undefined` | An object containing the following keys: `name`, `now`, `nextJob`, `grace`                          |
+| `serverMonitor` | `object` &#124; `undefined` | An object containing the following keys: `serverMonitor`, `values`                                  |
+
+The `ping` object holds the follwing keys:
+
+| key                  | type       | description                              |
+| -------------------- | ---------- | ---------------------------------------- |
+| `latency`            | `integer`  | `milliseconds` - `time to first byte`    |
+| `statusCode`         | `integer`  | The status code retured from the request |
+| `expectedStatusCode` | `integer`  | The expected status code                 |
+| `createdAt`          | `datetime` |                                          |
+
+The `cronjob` object holds the following keys:
+
+| key       | type                        | description                                                                                             |
+| --------- | --------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `name`    | `string`                    | The name of the cron job monitor                                                                        |
+| `now`     | `string` &#124; `undefined` | String in the format: `MM/DD/YYYY HH:mm UTC` - moment when we checked the cron job monitor              |
+| `nextJob` | `string` &#124; `undefined` | String in the format: `MM/DD/YYYY HH:mm UTC` - moment when the cron job should have started             |
+| `grace`   | `string` &#124; `undefined` | String in the format: `MM/DD/YYYY HH:mm UTC` - moment when the cron job should have finished with grace |
+
+The `serverMonitor` object holds the following keys:
+
+| key             | type                       | description                           |
+| --------------- | -------------------------- | ------------------------------------- |
+| `serverMonitor` | `object`                   | Containing the following keys: `name` |
+| `values`        | `array` &#124; `undefined` | An array of objects                   |
+
+The `values` object holds the following keys:
+
+| key     | type      | description                 |
+| ------- | --------- | --------------------------- |
+| `type`  | `string`  | Enum: `CPU`, `RAM`, `DISC`  |
+| `value` | `integer` | The actual usage in percent |

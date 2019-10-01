@@ -1,0 +1,32 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/de/project-list.png";
+import CPImage from "../../images/de/create-project.png";
+
+# Projekte
+
+Ein Projekt besteht aus einer Ansammlung von Uptime Monitoren, Cronjob Monitoren und Server Monitoren. Bei einem Projekt können Sie angeben auf welchen Wegen Sie benachrichtigt werden wollen. Es gibt hier 4 Auswahl Möglichkeiten. `Telegram` müssen Sie nur über Telegram einrichten.
+
+## Hinzufügen eines Server Monitors
+
+- Loggen Sie sich bei `<ihr Organisationsname>.two00.com` ein
+- Klicken Sie auf **Projekte**
+- Klicken Sie auf **Projekt hinzufügen**:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="Liste aller Projekte"
+  hideDownload
+/>
+
+- Geben Sie einen **Namen**, einen **Hauptserver**, einen **Server 2** und eine **Server 3** für Ihren Monitor an. Wenn Sie Benachrichtigungen erhalten möchten könne Sie hier eine Email, eine Telefonnummer, eine Slack Webhook URL und eine Custom Webhook angeben.
+
+<ModalImage
+  className="img-small"
+  small={CPImage}
+  large={CPImage}
+  alt="Erstellen eines neuen Projektes"
+  hideDownload
+/>

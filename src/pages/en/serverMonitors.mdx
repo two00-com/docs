@@ -1,0 +1,101 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/de/project-list.png";
+import CIPImage from "../../images/de/create-in-project.png";
+import CSMImages from "../../images/de/create-server-monitor.png";
+import ISMIPImages from "../../images/de/inactive-server-monitor-in-project.png";
+import SSMIPImages from "../../images/de/success-server-monitor-in-project.png";
+
+# Server Monitoring
+
+## What is a server monitor used for?
+
+A **Server Monitor** checks if your server is using too many resources. This means, for example, that if a process has been started on your server that requires a lot of CPU memory, this can have a negative effect on the performance of your web server and, for example, not all visitors can be served and some will only see an error message instead of your web page. If this is the case, you will be notified by us. In addition, we monitor the disk space on your server, should it run out, you will also be notified about it by us.
+
+## Adding a Server Monitor
+
+- Log in to `<ihr Organisationsname>.two00.com`
+- Click on **Projects**
+- Select a **project**:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="List of all projects"
+  hideDownload
+/>
+
+- Click **Add Server Monitor**:
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detail view of a project"
+  hideDownload
+/>
+
+- Enter a **Name** for your monitor.
+
+<ModalImage
+  className="img-small"
+  small={CSMImages}
+  large={CSMImages}
+  alt="Create a new server monitor"
+  hideDownload
+/>
+
+- Click **Create New Server Monitor**
+
+Now select the **Help** button and follow the instructions to set up the Server Monitor on your server.
+
+Make sure [Node.js](https://nodejs.org/en/download/package-manager/) and [cURL](https://curl.haxx.se/download.html) is installed.
+
+```bash
+# Log on to your server
+ssh <your username>@<the ip address of your server>
+# install the @two00/cli
+npm install -g @two00/cli
+# check where your Node.js version is installed
+which node
+# open your crontab
+crontab -e
+```
+
+Now add the path to Node.js and your shell:
+
+```bash
+# add your path to bash here if it's not /bin/bash
+SHELL=/bin/bash
+# add your path to nodejs, usually /usr/bin
+PATH=/usr/bin
+```
+
+Add you new cron job to the crontab:
+
+```bash
+* * * * * two00 server-monitor 7009e586-8217-4f69-920d-a35ea5b7c3f4 > /dev/null 2>&1
+```
+
+Now your server will report the current health status to two00.com once a minute. If the CPU, memory or disk space exceeds 80% you will be notified immediately.
+
+**Inactive Server Monitor**
+
+<ModalImage
+  className="img-small"
+  small={ISMIPImages}
+  large={ISMIPImages}
+  alt="Inactive server monitor"
+  hideDownload
+/>
+
+**Active Server Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SSMIPImages}
+  large={SSMIPImages}
+  alt="Active server monitor"
+  hideDownload
+/>

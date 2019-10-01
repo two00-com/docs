@@ -1,0 +1,71 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/en/project-list.png";
+import CIPImage from "../../images/en/create-in-project.png";
+import CEPImages from "../../images/en/create-end-point.png";
+import IEIPImages from "../../images/en/inactive-end-point-in-project.png";
+import SEIPImages from "../../images/en/success-end-point-in-project.png";
+
+# End Points - Uptime Monitoring
+
+## What is an Uptime Monitor used for?
+
+An **uptime monitor** checks whether a web page, a web server or an endpoint is accessible on it or not. This means that if there is a problem on your server, you will be notified that your website or web server is no longer accessible or no longer responds with the usual status code.
+
+## Adding an Uptime Monitor
+
+- Log in to `<ihr Organisationsname>.two00.com`
+- Click on **Projects**
+- Select a **project**:
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="List of all projects"
+  hideDownload
+/>
+
+- Click on **Add end point**:
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detail view of a project"
+  hideDownload
+/>
+
+- Specify a **Name**, a **URL**, a **Status Code** and a **Request Method** for your monitor.
+
+<ModalImage
+  className="img-small"
+  small={CEPImages}
+  large={CEPImages}
+  alt="Create a end point"
+  hideDownload
+/>
+
+- Click on **Create new end point**
+
+Now this **URL** is pinged once a minute with the **selected request method**. If the response delivers a different **status code** than the **selected status code**, you will be notified immediately on one or multiple of the follwing 5 ways: email, sms, custom webhook, Slack or Telegram.
+
+**Inactive End Point Monitor**
+
+<ModalImage
+  className="img-small"
+  small={IEIPImages}
+  large={IEIPImages}
+  alt="Inactive end point monitor"
+  hideDownload
+/>
+
+**Active End Point Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SEIPImages}
+  large={SEIPImages}
+  alt="Active end point monitor"
+  hideDownload
+/>

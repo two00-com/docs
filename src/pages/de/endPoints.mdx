@@ -1,0 +1,71 @@
+import ModalImage from "react-modal-image";
+
+import PLImage from "../../images/de/project-list.png";
+import CIPImage from "../../images/de/create-in-project.png";
+import CEPImages from "../../images/de/create-end-point.png";
+import IEIPImages from "../../images/de/inactive-end-point-in-project.png";
+import SEIPImages from "../../images/de/success-end-point-in-project.png";
+
+# Endpunkte - Uptime Monitoring
+
+## Wozu wird ein Uptime Monitor verwendet?
+
+Ein **Uptime Monitor** überprüft ob eine Webseite, ein Webserver, bzw. ein Endpunkt darauf zugänglich ist oder nicht. Das heißt sollte ein Problem auf Ihrem Server bestehen werden Sie benachrichtigt das Ihre Webseite, bzw. Ihr Webserver nicht mehr erreichbar ist bzw. nicht mehr mit dem sonst üblichen Status Code antwortet.
+
+## Hinzufügen eines Cronjob Monitors
+
+- Loggen Sie sich bei `<ihr Organisationsname>.two00.com` ein
+- Klicken Sie auf **Projekte**
+- Wählen Sie ein **Projekt** aus
+
+<ModalImage
+  className="img-small"
+  small={PLImage}
+  large={PLImage}
+  alt="Liste aller Projekte"
+  hideDownload
+/>
+
+- Klicken Sie auf **Cronjob hinzufügen**
+
+<ModalImage
+  className="img-small"
+  small={CIPImage}
+  large={CIPImage}
+  alt="Detailansicht von einem ausgewähltem Projekt"
+  hideDownload
+/>
+
+- Geben Sie einen **Namen**, eine **URL**, einen **Status Code** und eine **Request Methode** für Ihren Monitor an.
+
+<ModalImage
+  className="img-small"
+  small={CEPImages}
+  large={CEPImages}
+  alt="Erstellen eines neuen Endpunktes"
+  hideDownload
+/>
+
+- Klicken Sie auf **Neuen Endpunkt erstellen**
+
+Nun wird diese **URL**, mit der **ausgewählten Request Methode** einmal in der Minute gepingt. Sollte der Response (Antwort vom Server) einen anderen Status Code liefern als der ausgewählte, werden Sie unverzüglich auf einen (oder allen) 5 Wege(n) informiert (Email, SMS, Webhook, Slack, Telegram).
+
+**Inaktiver Endpunkt Monitor**
+
+<ModalImage
+  className="img-small"
+  small={IEIPImages}
+  large={IEIPImages}
+  alt="Inaktiver Endpunkt"
+  hideDownload
+/>
+
+**Aktiver Endpunkt Monitor**
+
+<ModalImage
+  className="img-small"
+  small={SEIPImages}
+  large={SEIPImages}
+  alt="Aktiver Endpunkt"
+  hideDownload
+/>

@@ -1,0 +1,73 @@
+import ModalImage from "react-modal-image";
+
+import TCGImage from "../../images/telegram/telegram-create-a-group.png";
+import TAMImage from "../../images/telegram/telegram-add-member.jpg";
+import TATImage from "../../images/telegram/telegram-add-two00bot.jpg";
+import TABImage from "../../images/telegram/telegram-added-bot.jpg";
+import TSLTPImage from "../../images/telegram/telegram-start-listening-to-project.jpg";
+import TCPKImage from "../../images/telegram/telegram-copy-project-key.png";
+
+# Einrichten von Telegram Benachrichtgungen
+
+Wenn Sie benachrichtigungen in einer Telegram Gruppe erhalten möchten, könen Sie das wie folgt einrichten.
+
+- Erstellen Sie eine neue Telegram Gruppe oder öffnen Sie eine bereits bestehende (Sie müssen Adminsitrator der Gruppe sein um einen Bot hinzufügen zu können).
+
+<ModalImage
+  className="img-small"
+  small={TCGImage}
+  large={TCGImage}
+  alt="Neue Gruppe erstellen"
+  hideDownload
+/>
+
+- Klicken Sie auf den Namen Ihres Chats um auf die Einstellungen zu kommen und klicken Sie dann auf **Add Member**:
+
+<ModalImage
+  className="img-small"
+  small={TAMImage}
+  large={TAMImage}
+  alt="Neues Mitglied hinzufügen"
+  hideDownload
+/>
+
+- Suchen Sie nun nach dem **two00bot** und klicken Sie auf hinzufügen:
+
+<ModalImage
+  className="img-small"
+  small={TATImage}
+  large={TATImage}
+  alt="Two00bot hinzufügen"
+  hideDownload
+/>
+
+- Nach dem Sie den Bot hinzugefügt haben erscheint er in der Mitgliederliste der Gruppe:
+
+<ModalImage
+  className="img-small"
+  small={TABImage}
+  large={TABImage}
+  alt="Mitgliederliste mit two00bot"
+  hideDownload
+/>
+
+- Kopieren Sie auf `<Ihr Organisationsname>.two00.com` in Ihrem Projekt den `Projekt Schlüssel`:
+
+<ModalImage
+  small={TCPKImage}
+  large={TCPKImage}
+  alt="Mitgliederliste mit two00bot"
+  hideDownload
+/>
+
+- Schreiben sie nun **/start &lt;UUID&gt;** gefolgt von ihrem Projekt Schlüssel:
+
+<ModalImage
+  className="img-small"
+  small={TABImage}
+  large={TABImage}
+  alt="Mitgliederliste mit two00bot"
+  hideDownload
+/>
+
+Nun erhalten Sie Ihre Benachrichtigungen.
